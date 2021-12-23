@@ -4,7 +4,7 @@ import os
 import cv2
 import pickle
 from PIL import Image
-from skimage import color
+# from skimage import color
 
 mapper = {0:'angry',
  1:'disgust',
@@ -14,15 +14,15 @@ mapper = {0:'angry',
  5:'sad',
  6:'surprise'}
 
-def main:
+def main():
 	st.title("EMOTION DETECTOR")
 	st.text("Upload your image to predict your emotion")
 	my_model=pickle.load(open('face_emotion.p','rb'))
 	upload_file=st.file_uploader("Browse Image",type=["jpg",'png','jpeg'])
 	if upload_file is not None:
-	  img=Image.open(upload_file)
-	  st.image(img,caption="Uploaded Image")
-	  if st.button("PREDICT"):
+		img=Image.open(upload_file)
+		st.image(img,caption="Uploaded Image")
+	if st.button("PREDICT"):
 		st.write("Result....")
 		img=cv2.cvtColor(np.array(img),cv2.COLOR_RGB2GRAY)
 		img=cv2.resize(img,(48,48))
